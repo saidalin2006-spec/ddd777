@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QAZHEAT — Насосы, генераторы, оборудование в Казахстане</title>
+  <meta name="description" content="QAZHEAT — интернет-магазин насосного оборудования, генераторов, компрессоров. GRANDFAR, AQUOR, KUMO. Доставка по Казахстану.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preload" href="/images/qaz-heat-logo.png" as="image" fetchpriority="high">
+  <link rel="icon" href="/images/qaz-heat-logo.png" type="image/png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  <div id="ioiPreloader" class="ioi-preloader" role="status" aria-live="polite" aria-label="Загрузка QAZ HEAT">
+    <div class="ioi-preloader__inner">
+      <div class="ioi-preloader__mark">
+        <img src="/images/qaz-heat-logo.png" width="280" height="280" alt="QAZ HEAT" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var el = document.getElementById('ioiPreloader');
+      if (!el) return;
+      document.documentElement.classList.add('ioi-preloader-lock');
+      document.body.classList.add('ioi-preloader-lock');
+      var minMs = 1200;
+      var t0 = Date.now();
+      function done() {
+        var w = Math.max(0, minMs - (Date.now() - t0));
+        setTimeout(function () {
+          el.classList.add('ioi-preloader--out');
+          document.documentElement.classList.remove('ioi-preloader-lock');
+          document.body.classList.remove('ioi-preloader-lock');
+          function rm() { if (el.parentNode) el.parentNode.removeChild(el); }
+          el.addEventListener('transitionend', rm, { once: true });
+          setTimeout(rm, 800);
+        }, w);
+      }
+      if (document.readyState === 'complete') done();
+      else window.addEventListener('load', done);
+    })();
+  </script>
+
+  
+  <div id="cityModal" class="modal-overlay">
+    <div class="modal city-modal">
+      <button class="city-modal__close" id="cityClose" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="city-modal__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h2>Ваш город — <span id="cityName">Караганда</span>?</h2>
+      <p>Мы подберём товары и условия доставки для вашего региона</p>
+      <div class="city-modal__actions">
+        <button class="btn btn--primary" id="cityConfirm">Да, всё верно</button>
+        <button class="btn btn--outline" id="cityChange">Выбрать другой</button>
+      </div>
+      <div id="cityList" class="city-list hidden">
+        <div class="city-list__search">
+          <input type="text" placeholder="Найти город..." id="citySearch">
+        </div>
+        <div class="city-list__items">
+          <button data-city="Алматы">Алматы</button>
+          <button data-city="Астана">Астана</button>
+          <button data-city="Караганда">Караганда</button>
+          <button data-city="Шымкент">Шымкент</button>
+          <button data-city="Актобе">Актобе</button>
+          <button data-city="Павлодар">Павлодар</button>
+          <button data-city="Семей">Семей</button>
+          <button data-city="Атырау">Атырау</button>
+          <button data-city="Костанай">Костанай</button>
+          <button data-city="Усть-Каменогорск">Усть-Каменогорск</button>
+          <button data-city="Тараз">Тараз</button>
+          <button data-city="Кызылорда">Кызылорда</button>
+          <button data-city="Актау">Актау</button>
+          <button data-city="Петропавловск">Петропавловск</button>
+          <button data-city="Кокшетау">Кокшетау</button>
+          <button data-city="Талдыкорган">Талдыкорган</button>
+          <button data-city="Экибастуз">Экибастуз</button>
+          <button data-city="Темиртау">Темиртау</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <header id="header" class="header">
+    <div class="container header__inner">
+      <a href="#/" class="header__logo">
+        <span class="logo-text"><span class="logo-text__qaz">QAZ</span><span class="logo-text__heat">HEAT</span></span>
+      </a>
+
+      <nav class="header__nav" id="mainNav">
+        <a href="#/" class="nav-link active" data-nav="home">Главная</a>
+        <a href="#/catalog" class="nav-link" data-nav="catalog">Каталог</a>
+        <a href="#/about" class="nav-link" data-nav="about">О нас</a>
+        <a href="#/contacts" class="nav-link" data-nav="contacts">Контакты</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="header__city" id="headerCity">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="headerCityName">Караганда</span>
+        </button>
+        <a href="#/cart" class="header__cart" id="cartBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+        <button class="header__burger" id="burgerBtn" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu__nav">
+      <a href="#/" data-nav="home">Главная</a>
+      <a href="#/catalog" data-nav="catalog">Каталог</a>
+      <a href="#/about" data-nav="about">О нас</a>
+      <a href="#/contacts" data-nav="contacts">Контакты</a>
+      <a href="#/cart" data-nav="cart">Корзина</a>
+    </nav>
+  </div>
+
+  
+  <main id="app"></main>
+
+  
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#/" class="header__logo">
+            <span class="logo-text"><span class="logo-text__qaz">QAZ</span><span class="logo-text__heat">HEAT</span></span>
+          </a>
+          <p>Насосное оборудование, генераторы, компрессоры с доставкой по всему Казахстану.</p>
+        </div>
+        <div class="footer__links">
+          <h4>Каталог</h4>
+          <a href="#/catalog?category=pumps">Насосы</a>
+          <a href="#/catalog?category=stations">Станции водоснабжения</a>
+          <a href="#/catalog?category=generators">Генераторы</a>
+          <a href="#/catalog?category=compressors">Компрессоры</a>
+          <a href="#/catalog?category=heaters">Обогреватели</a>
+        </div>
+        <div class="footer__links">
+          <h4>Компания</h4>
+          <a href="#/about">О нас</a>
+          <a href="#/contacts">Контакты</a>
+          <a href="#/catalog">Каталог</a>
+        </div>
+        <div class="footer__contact">
+          <h4>Контакты</h4>
+          <a href="tel:+77088022363">+7 708 802 2363</a>
+          <a href="mailto:info@qazheat.kz">info@qazheat.kz</a>
+          <a href="#/contacts" id="footerAddress" class="footer__address-text">г. Караганда, ул. Гоголя, 2/1</a>
+          <div class="footer__socials">
+            <a href="https://wa.me/77088022363" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+            <a href="https://instagram.com/qazheat" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 QAZHEAT. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <div class="fab" id="fab">
+    <div class="fab__options">
+      <a href="https://wa.me/77088022363" target="_blank" rel="noopener" class="fab__option fab__option--whatsapp" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a href="tel:+77088022363" class="fab__option fab__option--phone" title="Позвонить">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </a>
+    </div>
+    <button class="fab__trigger" id="fabTrigger" aria-label="Связаться с нами">
+      <svg class="fab__icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+      <svg class="fab__icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
